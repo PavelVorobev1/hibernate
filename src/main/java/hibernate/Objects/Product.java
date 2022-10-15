@@ -1,4 +1,4 @@
-package hibernate;
+package hibernate.Objects;
 
 import javax.persistence.*;
 
@@ -16,9 +16,27 @@ public class Product {
     @Column(name = "price")
     private int price;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Product(String title, int price) {
         this.title = title;
         this.price = price;
+    }
+
+    public Product(String title, int price, User user) {
+        this.title = title;
+        this.price = price;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Product(Long id, String title, int price) {
@@ -60,6 +78,7 @@ public class Product {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", price=" + price +
+                ", user=" + user +
                 '}';
     }
 }

@@ -1,5 +1,7 @@
-package hibernate;
+package hibernate.Dao;
 
+import hibernate.Objects.Product;
+import hibernate.SessionFactoryUtils;
 import org.hibernate.Session;
 
 import java.util.List;
